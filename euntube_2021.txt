@@ -111,7 +111,35 @@ Controller와 URL을 관리하기 쉽게 해줌
 /videos/comments -> Comment on a video
 /videos/comments/delete -> Delete A Comment of a Video
 
+#1 Making Our Routers
+app.get 대신 router.get사용
 
+const userRouter = express.Router();
+const handleEditUser = (req, res) => res.send("Edit User");
+userRouter.get("/edit", handleEditUser);
+app.use("/user", userRouter);
+
+localhost:4000/user/edit주소로 이동 시
+app.use에서 /user를 확인 userRouter로 보내주고
+userRouter.get에서 /edit를 확인 handleEditUser가 작동
+
+#2 Cleaning the Code
+create routers folder
+create Routers(.js) files inside routers folder
+
+import express from "express";
+
+~~~
+
+export default ~~~Router;
+
+#3 Exports
+js 마지막에 export default ~~~로 할 때에는 1 개밖에 못함
+export const ~~~로 하면 여러 개 가능
+import { ~~~, ~~~ }로 import
+
+create controllers folder
+create Controllers(.js) files insde controllers folder
 
 
 
