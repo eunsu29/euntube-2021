@@ -1,0 +1,27 @@
+{
+  "name": "euntube_2021",
+  "version": "1.0.0",
+  "description": "Youtube Clone built",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eunsu29/euntube-2021.git"
+  },
+  "scripts": {
+    "dev": "nodemon --exec babel-node src/server.js"
+  },
+  "author": "Eunsu Lee",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eunsu29/euntube-2021/issues"
+  },
+  "homepage": "https://github.com/eunsu29/euntube-2021#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.8",
+    "@babel/node": "^7.14.7",
+    "@babel/preset-env": "^7.14.8",
+    "nodemon": "^2.0.12"
+  }
+}

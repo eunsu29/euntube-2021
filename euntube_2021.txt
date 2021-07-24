@@ -1,0 +1,122 @@
+###1 Introduction
+
+# Node.js
+브라우저 밖에서 js 사용가능하게 해줌
+
+# npm(Node Package Manger)
+Node.js 모듈을 패키지로 만들어 관리, 배포가 가능하고
+다른 패키지를 다운받아 사용도 가능하다.
+
+
+###2 Set up
+
+#0 초기 파일 생성
+폴더 생성
+VSCode 실행
+~ git init // 깃 초기화
+git repository 추가하고
+~ git remote origin 주소
+~ npm init // package.json 생성
+index.js 파일 생성
+
+#1 Install Express
+package.json에 scripts추가
+~ npm run 명령어로 실행
+~ npm i express // express설치
+dependencies - express실행할 때 필요한 패키지들
+delete - node_modules, package-lock.json
+
+#2 Understanding Dependencies
+~ npm i // package.json 안의 dependencies의 패키지들만 알아서 설치해줌
+.gitignore 파일생성 // 깃허브 업로드시 무시할 파일 설정
+	/node_modules
+
+#3 Babel - 최신 자바스크립트를 Nodejs에서 사용 가능하도록 컴파일해줌
+dependencies - 프로젝트에 필요한 패키지
+		express - 서버를 구동해야하는 프로젝트에 필요
+devDependencies - 개발자에게 필요한 패키지
+		babel - 최신 코드를 사용하고 싶은 개발자에게 필요
+babel.config.json 파일 생성 // ~ touch babel.config.json
+
+
+#4 Nodemon - 파일이 수정 될 때 babel-node 재시작 해줌
+scripts - "dev": "babel-node index.js" // babel-node로 index.js 실행
+~ npm i nodemon --save-dev
+"dev": "nodemon --exec babel-node index.js" // node index.js -> babel-node index.js
+
+
+###3 Introduction to  Express
+
+#0 Create Server
+src 폴더 생성
+src/server.js 파일 생성
+express 앱 및 포트할당, 서버 가동
+
+#1 GET Requests
+http 서버끼리 소통
+
+#2 GET Requests p.2
+app생성과 listen 사이에 앱 설정 코드 작성
+app.get("/", 함수); // root 페이지에 접근할 시 함수 실행
+
+#3 Responses
+GET에는 req, res 2개의 obj가 있다
+res.end(); or res.send("문구");
+
+#4 Recap 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
