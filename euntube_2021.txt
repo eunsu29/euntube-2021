@@ -163,6 +163,48 @@ use에서 user, video 분류하고 router로 세부 url
 /videos/:id/delete -> Delete Video
 /vidoes/upload -> Upload Video
 
+#7 URL Parameters pt.1
+/:id // :id를 변수로 인식
+/upload를 /:id 위에 위치
+
+#8 URL Parameters pt.2
+
+
+#5 Templates
+
+#0 Returning HTML
+
+#1 Configuring Pug
+~ npm i pug
+app.set("view engine", "pug") // server.js
+create views folder
+
+pug의 기본 루트 - process.cwd()/views
+
+#2 Partials
+app.set("views", process.cwd() + "/src/views") // 루트설정
+
+pug 내부에서 js 사용 방법
+#{}안에 삽입
+
+create partials folder
+make footer.pug
+replace footer of each pug files
+-> include partials/footer.pug
+
+#3 Extending Templates
+extends base.pug // base.pug을 가져다 씀
+
+base.pug에서 block 블록명으로 지정해주고
+base extends할 파일에서
+block content
+	h1 ~~~
+적용완료
+
+#4 Variables to Templates
+pug은 controller에서 render할 때 변수 제공 가능
+res.render("Home", {pageTitle: "Home"}) // controller.js
+title #{pageTitle} | Euntube // base.pug
 
 
 
