@@ -32,6 +32,7 @@ delete - node_modules, package-lock.json
 	/node_modules
 
 #3 Babel - 최신 자바스크립트를 Nodejs에서 사용 가능하도록 컴파일해줌
+@babel/core, @babel/node, @babel/preset-env 설치
 dependencies - 프로젝트에 필요한 패키지
 		express - 서버를 구동해야하는 프로젝트에 필요
 devDependencies - 개발자에게 필요한 패키지
@@ -52,10 +53,10 @@ src 폴더 생성
 src/server.js 파일 생성
 express 앱 및 포트할당, 서버 가동
 
-#1 GET Requests
+#1 GET Requests pt.1
 http 서버끼리 소통
 
-#2 GET Requests p.2
+#2 GET Requests pt.2
 app생성과 listen 사이에 앱 설정 코드 작성
 app.get("/", 함수); // root 페이지에 접근할 시 함수 실행
 
@@ -63,28 +64,52 @@ app.get("/", 함수); // root 페이지에 접근할 시 함수 실행
 GET에는 req, res 2개의 obj가 있다
 res.end(); or res.send("문구");
 
-#4 Recap 
+#4 Recap
+
+#5 Middlewares pt.1
+req, res, next // next로 다음 handler로 보내줌
+app.use(middleware) 아래에 app.get() // 순서중요
+
+#6 Middlewares pt.2
+
+#7 Setup Recap
+
+#8 Servers Recap
+브라우저 -> request(listening 가능한 사이트에서만 요청 가능) -> respond
+node_modules에서 express import
+express app 생성
+설정한 PORT listening(종료 전까지 listening 유지)
+app.get으로 해당 req에 맞는 res 보내주기
+
+#9 Controllers Recap
+모든 handler는 req, res, next를 가지고 있음
+res.end(), res.send()
+
+#10 Middleware Recap
+
+#11 External Middlewares
+morgan 설치
+npm을 통해 외부 middleware도 설치해서 사용 가능
 
 
+###4 Routers
 
+#0 What are Routers?
+Controller와 URL을 관리하기 쉽게 해줌
 
+/ -> Home
+/join -> Join
+/login -> Login
+/search -> Search
 
+/users/edit -> Edit User
+//users/delete -> Delete User
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/videos/watch -> Watch Video
+/videos/edit -> Edit Video
+/videos/delete -> Delete Video
+/videos/comments -> Comment on a video
+/videos/comments/delete -> Delete A Comment of a Video
 
 
 
