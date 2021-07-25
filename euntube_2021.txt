@@ -251,6 +251,55 @@ each else
 mixins
 
 
+### 6 MongoDB and Mongoose
+
+#0 Array Database pt.1
+req.params.id = id of URL in router
+make anchor to move /videos/id in video.pug
+
+#1 Array Database pt.2
+href에서 /~~~ 있으면 절대경로(localhost:4000/~~~)로 이동
+/ 없이 ~~~ 상대경로(localhost:4000/###/~~~)로 이동
+
+#2 Edit Video pt.1
+GET, POST
+edit.pug
+form(method="POST") // using action="", send URL i want
+	input(name="title", placeholder="Video Title", value=video.title, required)
+	input(value="Save", type="submit")
+
+#3 Edit Video pt.2
+app.use(express.urlencoded({ extended: true })); // form에서 submit한 데이터 req.body로 확인 가능하게 해줌
+
+videoRouter.get("/:id(\\d+)/edit", getEdit);
+videoRouter.post("/:id(\\d+)/edit", postEdit);
+-> videoRouter.route("/:id(\\d+)/edit").get(getEdit).post(postEdit)
+
+res.redirect(`/videos/${id}`); // after editing, go to watching page
+
+#4 Recap
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
