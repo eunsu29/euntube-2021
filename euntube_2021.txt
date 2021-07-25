@@ -206,11 +206,49 @@ pug은 controller에서 render할 때 변수 제공 가능
 res.render("Home", {pageTitle: "Home"}) // controller.js
 title #{pageTitle} | Euntube // base.pug
 
+#5 Recap
+app.set("view engine", "pug"); // pug 사용설정
+app.set("view", process.cwd() + "/src/views"); /views 경로변경
+res.render("home", {pageTitle: "Home"});
+
+include partials/footer.pug // 똑같이 삽입되는 footer include 사용
 
 
+extends base.pug // ~~~.pug에서 base.pug 붙여넣기
 
+// base.pug
+head
+	title #{pageTitle} | Euntube // render 될 때 받은 변수로 title 설정
 
+#6 MVP Styles
+<link rel="stylesheet" href="https://unpkg.com/mvp.css">
 
+#7 Conditionals
+pug에서 if문	
+
+#8 Iteration
+each 요소 in array, else 사용가능
+	ul
+		each video in videos
+			li=video
+		else
+			li Nothing is here
+
+#9 Mixins
+video.pug
+mixin video(info) // video=mixin name, info=variable
+	h4=info.title
+
+home.pug
+include mixins/video // including video.pug
+
+each video in videos // videos=variable from videocontroller
+	+video(info) // '+' means using mixin, video=mixin name
+
+#10 Recap
+if
+each else
+mixins
 
 
 
