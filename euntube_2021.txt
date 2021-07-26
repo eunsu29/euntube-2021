@@ -302,10 +302,32 @@ Connect Node.js and MongoDB
 mongod, mongo check on terminal
 
 db.js
+import mongoose, { mongo } from "mongoose";
 
-#9 CRUD Introduction
+mongoose.connect("mongodb://127.0.0.1:27017/euntube", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
+const db = mongoose.connection;
 
+const handleOpen = () => console.log("✅ Connected to DB");
+const handleError = (error) => console.log("❌ DB Error", error);
+
+db.once("open", handleOpen);
+db.on("error", handleError);
+
+#9 CRUD Introduction - Create Read Update Delete
+
+#10 Video Model
+/models/Video.js
+schema 생성
+
+#11 Our First Query pt.1
+init.js // import db, model, app
+
+#12 Our First Query pt.2
+Video.find() // callback, promise 2 kinds
 
 
 
