@@ -278,10 +278,32 @@ videoRouter.post("/:id(\\d+)/edit", postEdit);
 res.redirect(`/videos/${id}`); // after editing, go to watching page
 
 #4 Recap
+form에 method POST
+
+route("/~~~/###").get(~~~).post(~~~) // 한 줄로 사용가능
+
+req.params = url
+req.body = html body // express.urlencoded({ extended: true}) router 위에 사용
+                     // input에는 항상 name이 필요, name이 있어야 req.body로 정보를 받을 수 있다.
+
+#5 More Practice pt.1
+make controller first then make router
+make upload anchor in base.pug
 
 
+#6 More Practice pt.2
+make Upload function on fake DB with POST Method
 
+#7 Introduction to MongoDB
+JSON 형태로 저장(sql이 아님)
 
+#8 Connecting to Mongo
+Connect Node.js and MongoDB
+mongod, mongo check on terminal
+
+db.js
+
+#9 CRUD Introduction
 
 
 
