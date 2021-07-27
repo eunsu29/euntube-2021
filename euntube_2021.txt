@@ -329,6 +329,39 @@ init.js // import db, model, app
 #12 Our First Query pt.2
 Video.find() // callback, promise 2 kinds
 
+#13 Async Await = promise
+
+#14 Returns and Renders
+
+#15 Creating a Video pt.1
+
+#16 Creating a Video pt.2
+const video = new Video({});
+video.save()
+
+Video.create({}) // i can use simple way
+
+#17 Exceptions and Validation
+make postUpload()
+try {} catch(error) {}
+add some conditions at Video.js(DB)
+
+#18 More Schema
+schema options(trim, minLength, maxLength, ...)
+
+#19 Video Detail
+MongoDB' id is 24 length of hexamical
+Video.findbyId() // using Reqular Expression
+
+#20 
+
+
+
+
+
+
+
+
 
 
 
