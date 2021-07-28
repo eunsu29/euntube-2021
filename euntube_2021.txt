@@ -170,7 +170,7 @@ use에서 user, video 분류하고 router로 세부 url
 #8 URL Parameters pt.2
 
 
-#5 Templates
+###5 Templates
 
 #0 Returning HTML
 
@@ -251,7 +251,7 @@ each else
 mixins
 
 
-### 6 MongoDB and Mongoose
+###6 MongoDB and Mongoose
 
 #0 Array Database pt.1
 req.params.id = id of URL in router
@@ -398,8 +398,27 @@ i - means doesn't divide upper case and lower case
 `^${keyword}` - starts with keyword
 `${keyword}$` - ends with keyword
 
+#28 Conclusions
 
 
+###7 User Authentication
+
+#0 Create Account pt.1
+create User.js(model), join.pug(form), controller and router
+option in Schema, can use 'unique'
+
+#1 Create Account pt.2
+update postJoin
+
+#2 Create Account pt.3
+Password Hashing
+~ npm i bcrypt // password hash npm
+using bcrypt inside of User.pre("save" await function () {})
+
+#3 Form Validation
+User.exists({$or:[{condition1},{condition2}]}) // check condition1 or condition2
+
+#4 Status Codes
 
 
 
