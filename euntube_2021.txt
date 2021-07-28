@@ -88,7 +88,7 @@ res.end(), res.send()
 #10 Middleware Recap
 
 #11 External Middlewares
-morgan 설치
+morgan 설치 // method, url, status code 등의 로그를 남겨줌
 npm을 통해 외부 middleware도 설치해서 사용 가능
 
 
@@ -353,13 +353,50 @@ schema options(trim, minLength, maxLength, ...)
 MongoDB' id is 24 length of hexamical
 Video.findbyId() // using Reqular Expression
 
-#20 
+#20 Edit Video pt.1
+edit getEdit function
 
+#21 Edit Video pt.2
 
+#22 Edit Video pt.3
+Video.findByIdAndUpdate(id, {modify value})
 
+#23 Middlewares
+Middleware는 model이 생성되기 전에 만들어야 한다
+Video.pre("save", async function () {}) // this function will run before saving Video
 
+db.collName.remove({}) // 비디오 삭제
 
+#24 Statics
+can make funcions inside of Video model
+using functions Video.formathashtags like Video.create // do not need to import, import Video only
 
+#25 Delete Video
+await Video.findByIdAndDelete(id);
+
+#26 Search pt.1
+making search.pug, updating Controller and Router
+
+Video.find().sort({~~~: "options"}) // options : asc, desc
+
+Video Id in URL - req.params // 
+send form - req.body // POST method
+search form - req.query // URL Data
+
+#27 Search pt.2
+find() // []배열로 리턴
+findOne() // {}객체로 리턴
+
+Video.find({
+      title: {
+        $regex: new RegExp(keyword, "i"), 
+      },
+    });
+
+Regular Expression
+i - means doesn't divide upper case and lower case
+`^${keyword}` - starts with keyword
+`${keyword}$` - ends with keyword
 
 
 
