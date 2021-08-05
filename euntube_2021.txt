@@ -420,6 +420,80 @@ User.exists({$or:[{condition1},{condition2}]}) // check condition1 or condition2
 
 #4 Status Codes
 
+#5 Login pt.1
+create login.pug
+
+#6 Login pt.2
+make postLogin() with bcrypt.compare(password, hash)
+
+#7 Sessions and Cookies pt.1
+Session is like a memory between browser and backend
+~ npm i express-session
+
+#8 Sessions and Cookies pt.2
+서버에서 브라우저로 세션 데이터를 전송
+세션값을 쿠키에 저장하고 매 요청 때 마다 서버에 전달
+이를 통해 서버에서는 세션값으로 유저를 구분할 수 있다.
+
+#9 Logged In User pt.1
+req.session.loggedIn = true; // when login successfully
+
+#10 Logged In User pt.2
+pug file can access a res.locals object(already imported)
+make middlewares.js
+res.locals.~~~ = req.session.@@@
+
+#11 Recap
+
+#12 MongoStore
+~ npm i connect-mongo
+save session to MongoDB, when refreshing backend, still logged in
+
+#13 Uniinitialized Sessions
+resave - save sessions every request, even if you modify nothing
+saveUninitialized - when create a session, if session is not modified will be not saved
+
+#14 Expiration and Secrets
+app.use(session({
+					cookie: {
+						maxAge: ###}})) // cookie에서 expire를 설정
+.env <- hide Strings
+
+#15 Environment Variables
+~ npm i dotenv
+import "dotenv/config" on 1st line inside of init.js
+
+#16 Github Login pt.1
+make oauth app in github
+a(href="https://github.com/login/oauth/authorize?client_id=~~~~~~~~")
+					
+#17 Github Login pt.2
+make router and controller to reduce URL on pug
+new URLSearchParams(config).tostring();
+
+#18 Github Login pt.3
+
+#19 Github Login pt.4
+~ npm i node-fetch
+
+#20 Github Login pt.5
+get userdata and emaildata
+
+#21 Github Login pt.6
+
+#22. Logout
+req.session.destroy();
+
+#23 Recap
+
+
+
+
+
+
+
+
+
 
 
 
