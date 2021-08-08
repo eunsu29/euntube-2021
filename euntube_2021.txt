@@ -487,6 +487,28 @@ req.session.destroy();
 #23 Recap
 
 
+###8 User Profile
+
+#0 Edit Profile GET
+
+#1 Protector and Public Middlewares
+make middlewares divide logged in or not
+Router.route("/~~~").all(middleware).get(~~~).post(~~~) // use middleware both of get and post
+
+#2 Edit Profile POST pt.1
+
+#3 Edit Profile POST pt.2
+프로필 수정 시 username, email 중복 사용 안되게 validation
+session과 body 값이 다를 경우 사용 중인지 체크
+
+#4 Change Password pt.1
+
+
+
+
+
+
+
 
 
 

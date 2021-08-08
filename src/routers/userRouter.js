@@ -1,18 +1,27 @@
 import express from "express";
 import {
-  edit,
   logout,
   see,
   callGithubLogin,
   callbackGithubLogin,
+  getEdit,
+  postEdit,
+  getChangePassword,
+  postChangePassword,
 } from "../controllers/userController";
+import { protectorMiddleware, publicOnlyMiddleware } from "../middlewares";
 
 const userRouter = express.Router();
 
-userRouter.get("/logout", logout);
-userRouter.get("/github/call", callGithubLogin);
-userRouter.get("/github/callback", callbackGithubLogin);
-userRouter.get("/edit", edit);
+userRouter.get("/logout", protectorMiddleware, logout);
+userRouter.get("/github/call", publicOnlyMiddleware, callGithubLogin);
+userRouter.get("/github/callback", publicOnlyMiddleware, callbackGithubLogin);
+userRouter.route("/edit").all(protectorMiddleware).get(getEdit).post(postEdit);
+userRouter
+  .route("/change-password")
+  .all(protectorMiddleware)
+  .get(getChangePassword)
+  .post(postChangePassword);
 userRouter.get(":id", see);
 
 export default userRouter;

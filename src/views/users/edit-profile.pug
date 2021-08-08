@@ -1,0 +1,14 @@
+extends ../base
+
+block content 
+    h4=errorMessage
+    form(method="POST")
+        input(name="name", type="text", placeholder="Name" required value=loggedInUser.name) 
+        input(name="email", type="email", placeholder="E-mail" required value=loggedInUser.email)
+        input(name="username", type="text", placeholder="Username" required value=loggedInUser.username)
+        input(name="location", type="text" placeholder="Location" value=loggedInUser.location)
+        input(type="submit", value="Update Profile" style="cursor: pointer")
+        if !loggedInUser.socialOnly
+            hr
+            a(href="change-password" style="text-decoration:none")
+                input(type="button" value="Change Password" style="cursor: pointer")
