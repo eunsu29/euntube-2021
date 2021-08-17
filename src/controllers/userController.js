@@ -118,7 +118,7 @@ export const callbackGithubLogin = async (req, res) => {
     }
     let user = await User.findOne({ email: emailObj.email });
     if (!user) {
-      const user = await User.create({
+      user = await User.create({
         name: userData.name,
         avatarUrl: userData.avatar_url,
         username: userData.login,
@@ -148,17 +148,18 @@ export const getEdit = (req, res) => {
 export const postEdit = async (req, res) => {
   const {
     session: {
-      user: { _id, username: sessionUsername, email: sessionEmail },
+      user: { _id, username, email, avatarUrl },
     },
-    body: { name, email, username, location },
+    body: { name, username: formUsername, email: formEmail, location },
+    file,
   } = req;
-  const existUsername = await User.exists({ username });
-  const existEmail = await User.exists({ email });
+  const existUsername = await User.exists({ username: formUsername });
+  const existEmail = await User.exists({ email: formEmail });
   let exists = false;
-  if (sessionUsername !== username && existUsername) {
+  if (username !== formUsername && existUsername) {
     exists = true;
   }
-  if (sessionEmail !== email && existEmail) {
+  if (email !== formEmail && existEmail) {
     exists = true;
   }
   if (exists) {
@@ -170,9 +171,10 @@ export const postEdit = async (req, res) => {
   const updatedUser = await User.findByIdAndUpdate(
     _id,
     {
+      avatarUrl: file ? file.path : avatarUrl,
       name,
-      email,
-      username,
+      email: formEmail,
+      username: formUsername,
       location,
     },
     { new: true }
@@ -182,10 +184,40 @@ export const postEdit = async (req, res) => {
 };
 
 export const getChangePassword = (req, res) => {
-  return res.render("users/change-password", { pegeTitle: "Change Password" });
+  return res.render("users/change-password", { pageTitle: "Change Password" });
 };
-export const postChangePassword = (req, res) => {
-  return res.redirect("/");
+export const postChangePassword = async (req, res) => {
+  const {
+    session: {
+      user: { email },
+    },
+    body: { oldPassword, newPassword, newPasswordConfirmation },
+  } = req;
+  const user = await User.findOne({ email });
+  const ok = await bcrypt.compare(oldPassword, user.password);
+  if (!ok) {
+    return res.status(400).render("users/change-password", {
+      pageTitle: "Change Password",
+      errorMessage: "Password is Wrong",
+    });
+  }
+  if (newPassword !== newPasswordConfirmation) {
+    return res.status(400).render("users/change-password", {
+      pageTitle: "Change Password",
+      errorMessage: "Password Doesn't Match",
+    });
+  }
+  user.password = newPassword;
+  await user.save();
+  return res.redirect("/users/logout");
 };
 
-export const see = (req, res) => res.send("see");
+export const see = async (req, res) => {
+  const { id } = req.params;
+  const user = await User.findById(id).populate("videos");
+  user.videos.sort((a, b) => b.createdAt - a.createdAt);
+  if (!user) {
+    return res.status(404).render("404", { pageTitle: "User not found" });
+  }
+  return res.render("users/profile", { pageTitle: user.name, user });
+};

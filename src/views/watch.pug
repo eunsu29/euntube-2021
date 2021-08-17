@@ -1,11 +1,19 @@
 extends base
 
 block content 
+    video(src="/" + video.fileUrl controls)
     h1=video.title
     div
         p=video.description
+        each hashtag in video.hashtags
+            span=hashtag
+        br
+        small Uploaded By 
+            a(href=`/users/${video.owner._id}`) #{video.owner.name}
+        br
         small=video.createdAt
     h3 #{video.views} #{video.views === 1 ? "view" : "views"}
-    a(href=`${video.id}/edit`) Edit Video &Rarr;
-    br
-    a(href=`${video.id}/delete`) Delete Video &Rarr;
+    if String(video.owner._id) === String(loggedInUser._id)
+        a(href=`${video.id}/edit`) Edit Video &Rarr;
+        br
+        a(href=`${video.id}/delete`) Delete Video &Rarr;

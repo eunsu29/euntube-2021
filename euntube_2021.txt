@@ -502,6 +502,70 @@ Router.route("/~~~").all(middleware).get(~~~).post(~~~) // use middleware both o
 session과 body 값이 다를 경우 사용 중인지 체크
 
 #4 Change Password pt.1
+when validate a password, using bcrypt
+await bcrypt.compare(newone, DB one)
+
+#5 Change Password pt.2
+findByIdAndUpdate( id, { ~~~ }, {new: true}) // new: true = 업데이트 되는 내용 외에 내용을 리턴받음
+
+#6 File Uploads pt.1
+~ npm i multer // multer 형식으로 파일 업로드 시켜줌
+multer process only multipart
+form(enctype="multipart/form-data") // enctype 추가
+label(for="##"), input(id="##") // 동일하게 작성
+req.file이 추가됨
+
+#7 File Uploads pt.2
+Never upload files on DB
+post(uploadFiles.single("avatar"), postEdit); // "avatar" = input(name="avatar")
+
+#8 Static Files and Recap
+app.use("/uploads", express.static("folder name")) // folder를 노출함
+
+#9 Video Upload
+post(uploadFiles.single("video"), postUpload)
+can limit filesize in middleware // limits: { fileSize: { ### }}
+
+#10 User Profile
+make user profile page
+
+#11 Video Owner pt.1
+add a ref for connecting User and Video models
+owner{ type: mongoose.Schema.Types.ObjectId, required: true, ref:{ "modelname" } }
+
+#12 Video Owner pt.2
+ref로 모델끼리 연결해줘서 비디오를 검색할 때 populate로 owner 값을 함께 찾아올 수 있다.
+const video = await Video.findById(id);
+const owner = await User.findById(video.owner._id)
+=> const video = await Video.findById(id).populate("owner");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
