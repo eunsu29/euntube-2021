@@ -534,10 +534,72 @@ add a ref for connecting User and Video models
 owner{ type: mongoose.Schema.Types.ObjectId, required: true, ref:{ "modelname" } }
 
 #12 Video Owner pt.2
+When uploading video, add owner in Video
 ref로 모델끼리 연결해줘서 비디오를 검색할 때 populate로 owner 값을 함께 찾아올 수 있다.
 const video = await Video.findById(id);
 const owner = await User.findById(video.owner._id)
 => const video = await Video.findById(id).populate("owner");
+
+#13 User's Videos
+Add videos array in User Schema
+Add video id in User
+
+#14 Bugfix
+User모델 pre.save에서 비밀번호가 수정되었을 때만 해쉬하게 수정
+if (this.isModified("password")) { ### }
+
+Edit, Delete 업로드한 사람만 가능하게
+
+#15 Conclusions
+
+
+###9 WEBPACK
+
+#0 Introduction to Webpack
+css가 이해할 수 있도록 변환해줌 바벨처럼
+
+#1 Webpack Configuration pt.1
+~ npm i webpack webpack-cli -D(or --save-dev)
+webpack.config.js // 웹팩 설정파일
+entry - 입력파일
+output - 결과
+
+#2 Webpack Configuration pt.2
+path.resolve(__dirname) // __dirname : 프로젝트 폴더 경로
+entry - 입력
+output - 변환후 저장
+moduel:{rules} - 옵션
+
+#3 Webpack Configuration pt.3
+add scripts on package.json
+
+#4 SCSS Loader
+install sass-loader, css-loader, style-loader
+scss -> css -> style순으로 변환
+use: [ "style-loader", "css-loader", "sass-loader" ] // webpack works from behind
+
+#5 MiniCssExtractPlugin
+~ npm i mini-css-extract-plugin -D
+using MiniCssExtractPlugin, devide css file and js file in individual folders
+
+#6 Better Developer Experience
+module.exports:{
+	watch: true, // 변화를 관찰하고 저장 시 파일 재생성
+	output: {
+		clean: true, // if restart wepack, before creating ouputfiles, delete existing ouputfiles
+	}
+}
+
+.gitignore에 assets폴더 추가
+
+scripts 변경
+dev:server, dev:assets
+
+#7 Recap
+
+
+
+
 
 
 
