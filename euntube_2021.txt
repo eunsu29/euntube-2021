@@ -598,6 +598,19 @@ dev:server, dev:assets
 #7 Recap
 
 
+###10 STYLES
+
+#0 Introduction
+add font-awesome in base.pug
+match scss folders and views folders
+reset html in styles.scss with import file
+
+#1 Styles pt.1
+
+#2 Styles pt.2
+
+
+
 
 
 
