@@ -1,19 +1,41 @@
 extends base
 
 block content 
-    video(src="/" + video.fileUrl controls)
-    h1=video.title
-    div
-        p=video.description
-        each hashtag in video.hashtags
-            span=hashtag
-        br
-        small Uploaded By 
-            a(href=`/users/${video.owner._id}`) #{video.owner.name}
-        br
-        small=video.createdAt
-    h3 #{video.views} #{video.views === 1 ? "view" : "views"}
-    if String(video.owner._id) === String(loggedInUser._id)
-        a(href=`${video.id}/edit`) Edit Video &Rarr;
-        br
-        a(href=`${video.id}/delete`) Delete Video &Rarr;
+    div#videoContainer
+        video(src="/" + video.fileUrl)
+        div#videoControls.videoControls
+            div.videoControls__play
+                span#play.videoControls__playBtn
+                    i.fas.fa-play
+            div.videoControls__volume
+                input(type="range" step="0.05" min="0" max="1" value=0.5)#volume
+                span#mute
+                    i.fas.fa-volume-up
+                div.videoControls__time
+                    span#currentTime 00:00:00
+                    span  / 
+                    span#totalTime 00:00:00
+            input(type="range" step="0.01" min="0" value=0)#timeline.videoControls__timeline
+            div
+                span#fullScreen
+                    i.fas.fa-expand
+        
+
+    //- h1=video.title
+    //- div
+    //-     p=video.description
+    //-     each hashtag in video.hashtags
+    //-         span=hashtag
+    //-     br
+    //-     small Uploaded By 
+    //-         a(href=`/users/${video.owner._id}`) #{video.owner.name}
+    //-     br
+    //-     small=video.createdAt
+    //- h3 #{video.views} #{video.views === 1 ? "view" : "views"}
+    //- if String(video.owner._id) === String(loggedInUser._id)
+    //-     a(href=`${video.id}/edit`) Edit Video &Rarr;
+    //-     br
+    //-     a(href=`${video.id}/delete`) Delete Video &Rarr;
+
+block scripts 
+    script(src="/static/js/videoPlayer.js") 

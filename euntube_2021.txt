@@ -606,8 +606,67 @@ match scss folders and views folders
 reset html in styles.scss with import file
 
 #1 Styles pt.1
+video diplay 방식 grid(표처럼)
 
 #2 Styles pt.2
+
+#3 Styles Conclusions
+
+
+###11 VIDEO PLAYER
+
+#0 Player Setup
+in webpack, can use object on entry
+can use [name] // variable to save files with entry names
+
+#1 Play Pause
+can use option in scss
+input:not(input[type="range"]) { ### }
+video.play() or video.pause()
+
+#2 Mute and Unmute
+video.muted = true or false
+
+#3 Volume
+make global variable volumeValue and use volumeRange.addEventListener("input") tracking changes
+
+#4 Duration and Current Time
+video.addEventListener("loadedmetadata", ###) // total time
+video.addEventListener("timeupdate", ###) // current time
+
+#5 Time Formatting
+using new Date().toISOString make format JAN 01 1970 00:00:00
+and .substr to cut and use
+
+#6 Timeline
+using input(type="range") make timeline
+set maximum value with video.duration
+
+#7 Fullscreen
+videoContainer.requestFullscreen(); // videoContainer = div
+document.exitFullscreen();
+can check in fullscreen or not with document.fullscreenElement return null or element
+
+#8 Controls Events pt.1
+addEventListener("mousemove") // when mouse in
+addEventListener("mouseleave") // when mouse out
+setTimeout(()=>{},ms) // return timeout id
+clearTimeout // cancel timeout with id
+
+#9 Controls Events pt.2
+const handleMouseMove = () => {
+  if (controlsMovementTimeout) {
+    clearTimeout(controlsMovementTimeout); // when mouse moves, cancel timeout
+    controlsMovementTimeout = null;
+  }
+  videoControls.classList.add("showing");
+  controlsMovementTimeout = setTimeout(hideControls, 3000); // also set timeout. if mouse stop, control is hided
+};
+
+#10 Recap
+
+#11 Styles Recap
+
 
 
 
