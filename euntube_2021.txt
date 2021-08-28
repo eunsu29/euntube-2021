@@ -668,6 +668,18 @@ const handleMouseMove = () => {
 #11 Styles Recap
 
 
+###12 VIEWS API
+
+#0 Register View Controller
+make apiRouter and controller(registerView)
+
+#1 Register View Event
+data-attribute
+can save any information with name like data-###
+access with divname.dataset.### // behind of data- will be a name in dataset
+
+#2 Conclusions
+
 
 
 

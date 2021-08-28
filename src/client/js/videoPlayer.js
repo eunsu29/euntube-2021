@@ -33,8 +33,12 @@ const handlePlaySpace = (event) => {
   }
 };
 
-const handleVideoEnd = () => {
+const handleEnded = () => {
   playBtnIcon.classList = "fas fa-play";
+  const { id } = videoContainer.dataset;
+  fetch(`/api/videos/${id}/view`, {
+    method: "POST",
+  });
 };
 
 const handleMute = (event) => {
@@ -128,9 +132,9 @@ playBtn.addEventListener("click", handlePlay);
 muteBtn.addEventListener("click", handleMute);
 volumeRange.addEventListener("input", handleVolumeChange);
 video.addEventListener("click", handlePlay);
-video.addEventListener("loadeddata", handleLoadedMetadata);
+video.addEventListener("loadedmetadata", handleLoadedMetadata);
 video.addEventListener("timeupdate", handleTimeUpdate);
-video.addEventListener("ended", handleVideoEnd);
+video.addEventListener("ended", handleEnded);
 videoContainer.addEventListener("mouseleave", handleMouseLeave);
 videoContainer.addEventListener("mousemove", handleMouseMove);
 videoContainer.addEventListener("dblclick", handleFullScreen);
