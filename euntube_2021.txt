@@ -672,6 +672,7 @@ const handleMouseMove = () => {
 
 #0 Register View Controller
 make apiRouter and controller(registerView)
+using fetch
 
 #1 Register View Event
 data-attribute
@@ -681,7 +682,38 @@ access with divname.dataset.### // behind of data- will be a name in dataset
 #2 Conclusions
 
 
+###13 VIDEO RECORDER
 
+#0 Recorder Setup
+make recorder.js and add on webpack.config.js
+navigator.mediaDevices.getUserMedia({ audio: true, video: true, }); // can get audio and video
+resolve regenerator-runtime error
+
+#1 Video Preview
+video.srcObject = stream
+video.play()
+
+#2 Recording Video pt.1
+const recorder = new MediaRecorder(stream,{ MimeType: "video/webm" })
+
+recorder.ondataavailable = (event) => {
+	event.data // can use video with data
+}
+
+recorder.start() / recorder.stop()
+
+#3 Recording Video pt.2
+const videoFile = URL.createObjectURL(event.data)
+video.srcObject = null;
+video.src = videoFile
+
+#4 Downloading the File
+const a = document.createElement("a")
+a.href = videoFile
+a.download = "파일명.webm"
+a.click()
+
+#5 Recap
 
 
 
