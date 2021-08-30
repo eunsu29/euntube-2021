@@ -716,6 +716,31 @@ a.click()
 #5 Recap
 
 
+###14 WEBASSEMBLY
+
+#0 Introduction
+~ npm i @ffmpeg/ffmpeg @ffmpeg/core
+
+#1 Transcode Video
+
+#2 Download Transcoded Video
+
+#3 Thumbnail
+
+#4 Recap
+
+#5 Thumbnail Upload pt.1
+add thumbNail in Video Model Schema
+update upload.pug
+
+#6 Thumbnail Upload pt.2
+change using single -> using fields, using req.file -> using req.files
+req.files.video[0] // video is an array
+fields([{ name: "video" }, { name: "thumb" }])
+
+
+
+
 
 
 
