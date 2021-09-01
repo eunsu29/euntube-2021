@@ -52,8 +52,8 @@ const handleDownload = async () => {
   actionBtn.removeEventListener("click", handleDownload);
   actionBtn.addEventListener("click", handleStart);
 
-  downloadFile(mp4Url, "My Recording.mp4");
-  downloadFile(thumbUrl, "My Thumbnail.jpg");
+  downloadFile(mp4Url, "MyRecording.mp4");
+  downloadFile(thumbUrl, "MyThumbnail.jpg");
 
   ffmpeg.FS("unlink", files.input);
   ffmpeg.FS("unlink", files.output);
@@ -84,7 +84,7 @@ const handleStart = async () => {
   actionBtn.addEventListener("click", handleStop);
 
   stream = await navigator.mediaDevices.getUserMedia({
-    audio: false,
+    audio: true,
     video: { width: 1027, height: 576 },
   });
   video.srcObject = stream;

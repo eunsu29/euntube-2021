@@ -731,7 +731,7 @@ a.click()
 
 #5 Thumbnail Upload pt.1
 add thumbNail in Video Model Schema
-update upload.pug
+add from in upload.pug
 
 #6 Thumbnail Upload pt.2
 change using single -> using fields, using req.file -> using req.files
@@ -739,6 +739,17 @@ req.files.video[0] // video is an array
 fields([{ name: "video" }, { name: "thumb" }])
 
 
+###15 FLASH MESSAGES
+
+#0 Installation
+~ npm i express-flash
+app.use(flash());
+req.flash("종류", "내용")
+req.locals.messages // can access in pug
+
+#1 Sending Messages
+make mixin
+style css
 
 
 

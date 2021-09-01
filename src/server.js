@@ -1,4 +1,5 @@
 import express from "express";
+import flash from "express-flash";
 import morgan from "morgan";
 import session from "express-session";
 import MongoStore from "connect-mongo";
@@ -24,8 +25,8 @@ app.use(
   })
 );
 
+app.use(flash());
 app.use(localsMiddleware);
-
 app.use((req, res, next) => {
   res.header("Cross-Origin-Embedder-Policy", "require-corp");
   res.header("Cross-Origin-Opener-Policy", "same-origin");
