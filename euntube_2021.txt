@@ -752,6 +752,50 @@ make mixin
 style css
 
 
+###16 COMMENT SECTION
+
+#0 Introduction
+
+#1 Comment Models
+make Comment Model
+
+#2 Comment Box
+update watch.pug for comment
+make commentSection.js with using dataset(when go to watch page set a dataset)
+
+#3 API Route pt.1
+update api router, video controller
+make handleSubmit with fetch // fetch doesn't change a url
+
+#4 API Route pt.2
+send a data from front-end to back-end
+app.use(express.json());
+JSON -> String -> JSON
+when send a data, it looks like a string so need to inform with headers
+fetch("address", {
+	method: "POST",
+	headers: {
+		"Content-Type": "application/json",
+	},
+	body: JSON.stringify({ text }),
+})
+
+#5 Commenting
+make createComment
+
+#6 Rendering Comments
+.populate("comments")
+video.comments.push(comment_id);
+add html comments and style css
+
+#7 Realtime Comments
+when receive status 201, add comment with createElement, appendChild and prependChild
+
+#8 Comment Ids
+코멘트 작성자와 로그인 유저가 같을 때 삭제 버튼 보이기
+realtime comment에 dataset id 추가
+sendStatus -> status().json()
+
 
 
 
