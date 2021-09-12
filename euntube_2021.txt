@@ -796,6 +796,25 @@ when receive status 201, add comment with createElement, appendChild and prepend
 realtime comment에 dataset id 추가
 sendStatus -> status().json()
 
+#9 Recap and Challange
+
+
+###17 DEPLOYMENT
+
+#0 Building the Backend pt.1
+~ npm install --save-dev @babel/core @babel/cli // install babel cli
+make script - "build:server": "babel src -d build" // babel로 컴파일, -d set the directory
+add build folder in .gitignore
+make script - "start": "node build/init.js"
+
+#1 #0 Building the Backend pt.2
+regeneratorRuntime Error is caused by async and await. import "regenerator-runtime"; for resolve
+
+#2 Building the Frontend
+can set the mode in webpack.config.js when using script
+"dev:assets": "webpack --mode=development -w"
+
+
 
 
 
