@@ -803,16 +803,32 @@ sendStatus -> status().json()
 
 #0 Building the Backend pt.1
 ~ npm install --save-dev @babel/core @babel/cli // install babel cli
-make script - "build:server": "babel src -d build" // babel로 컴파일, -d set the directory
+add script - "build:server": "babel src -d build" // babel로 컴파일, -d set the directory
 add build folder in .gitignore
-make script - "start": "node build/init.js"
+add script - "start": "node build/init.js"
 
 #1 #0 Building the Backend pt.2
 regeneratorRuntime Error is caused by async and await. import "regenerator-runtime"; for resolve
 
 #2 Building the Frontend
-can set the mode in webpack.config.js when using script
-"dev:assets": "webpack --mode=development -w"
+can set the mode in webpack.config.js when using script -> "dev:assets": "webpack --mode=development -w"
+add script "build":"npm run build:server && npm run build:assets"
+
+#3 Deploying to Heroku
+create a new app on heroku.com
+$ brew tap heroku/brew && brew install heroku
+~ heroku login for check heroku installed well
+~ git push heroku master
+
+#4 MongoDB Atlas
+make project and database using free tier
+set Keys and Values on heroku.com settings(Config Vars)
+set Key : DB_URL, Value : mongodb+srv://eunsu:<password>@cluster0.zonul.mongodb.net/myFirstDatabase?retryWrites=true&w=majority // mongodb password
+set Key : COOKIE_SECRET, Value : anything what you want
+
+#5 Environment Variables
+
+
 
 
 
