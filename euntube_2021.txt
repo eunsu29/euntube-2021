@@ -827,6 +827,28 @@ set Key : DB_URL, Value : mongodb+srv://eunsu:<password>@cluster0.zonul.mongodb.
 set Key : COOKIE_SECRET, Value : anything what you want
 
 #5 Environment Variables
+heroku.com -> settings -> reveal config vars
+.env, GH_SECRET, GH_CLIENT
+
+#6 Github and AWS S3 pt.1
+heroku.com -> deploy -> github
+enable automatic deploys
+
+#7 Github and AWS S3 pt.2
+aws.amazon.com -> s3 -> 버킷 만들기
+iam -> 사용자 추가 // make API Key
+ㄴ권한설정 -> AmazonS3FullAccess
+add AWS_ID, AWS_SECRET
+~ npm i --save multer-s3
+~ npm i aws-sdk
+modify middlewares.js
+
+#8 Github and AWS S3 pt.3
+modify bucket permissions
+update path in img, src, etc...
+
+#9 Production Environment
+
 
 
 
