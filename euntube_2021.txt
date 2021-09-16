@@ -848,7 +848,7 @@ modify bucket permissions
 update path in img, src, etc...
 
 #9 Production Environment
-
+const isHeroku = process.env.NODE_ENV === "production";
 
 
 
